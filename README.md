@@ -1,4 +1,6 @@
 # Pc
+This repository contains the codebase for a a web application which displays the components of buck converter with the url to buy them based on the current and power limits.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
 
