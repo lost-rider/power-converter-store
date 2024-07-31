@@ -1,0 +1,61 @@
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<!------ Include the above in your HEAD tag ---------->
+<!-- 
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
+
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div> -->
+<div class="navbar">
+  <h2>Power Converters</h2>
+</div>
+
+<div class="login-container">
+  <!-- Login -->
+<form *ngIf="activeForm==='login'" [formGroup]="loginForm" (ngSubmit)="login()">
+  <h2>Login</h2>
+  <div class="form-group">
+    <input type="text" formControlName="username" placeholder="Username">
+  </div>
+  <div class="form-group">
+    <input type="password" formControlName="password" placeholder="Password">
+  </div>
+ 
+  <button type="submit" >Login</button>
+  <p (click)="toggleForm('signin')">Create an account!
+    <span class="highlighted">Register</span>
+  </p>
+</form>
+<form *ngIf="activeForm==='signin'" [formGroup]="signinForm" (ngSubmit)="signin()">
+  <h2>Signin</h2>
+  <div class="form-group">
+    <input type="email" formControlName="email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <input type="text" formControlName="username" placeholder="Username">
+  </div>
+ 
+  <div class="form-group">
+    <input type="password" formControlName="password" placeholder="Password">
+  </div>
+  <button type="submit">Signin</button>
+  <p (click)="toggleForm('login')">Already have an account!
+    <span class="highlighted">Login</span>
+  </p>
+</form>
+</div>
