@@ -7,8 +7,14 @@
   border-radius: 20px;
   color: #ffffff;
 }
+.menu-icon {
+  width: 24px; /* Set desired width */
+  height: 24px; /* Set desired height */
+  object-fit: contain; /* Ensure the image maintains aspect ratio */
+}
 
 .toggle-button-row {
+  
 position: fixed;
 top: 20px;
 left: 20px;
@@ -17,7 +23,7 @@ align-items: center;
 justify-content: center;
 width: 40px;
 height: 40px;
-background: #fff;
+// background: #fff;
 border-radius: 50%;
 cursor: pointer;
 z-index: 1001;

@@ -1,6 +1,7 @@
 <app-menu></app-menu>
-<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" (click)="toggleDropdown()">
+<div class="main-container">
+<div>
+  <button class="raised-button"  (click)="toggleDropdown()">
     {{ selectedValue ? selectedValue : 'Select Component' }}
   </button>
   <div class="dropdown-menu" [class.show]="isOpen">
@@ -19,3 +20,4 @@
   <div>Hello capacitor</div>
 </div>
 
+</div>
