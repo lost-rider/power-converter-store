@@ -19,7 +19,7 @@ export class MenuComponent {
     this.router.navigate(['/budget-planner/dashboard']);
   }
   onProfile() {
-    this.router.navigate(['/budget-planner/profile']);
+    this.router.navigate(['/page/buy']);
   }
   onHistory() {
     this.router.navigate(['/budget-planner/history']);

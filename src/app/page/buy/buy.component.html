@@ -1,0 +1,21 @@
+<app-menu></app-menu>
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" (click)="toggleDropdown()">
+    {{ selectedValue ? selectedValue : 'Select Component' }}
+  </button>
+  <div class="dropdown-menu" [class.show]="isOpen">
+    <a class="dropdown-item" (click)="selectItem('Inductor')">Inductor</a>
+    <a class="dropdown-item" (click)="selectItem('Capacitor')">Capacitor</a>
+    <a class="dropdown-item" (click)="selectItem('Select Component')">Go back</a>
+
+  </div>
+</div>
+
+<div *ngIf=" selectedValue ==='Inductor' ">
+  <div>Hello Inductor</div>
+</div>
+
+<div *ngIf=" selectedValue ==='Capacitor' ">
+  <div>Hello capacitor</div>
+</div>
+

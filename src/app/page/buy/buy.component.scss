@@ -1,0 +1,31 @@
+.dropdown {
+    position: relative;
+    margin-left: 100px;
+    margin-top: 100px;
+    display: inline-block;
+    
+    
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+  }
+  
+  .dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    display: block;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #ddd;
+  }
+  
