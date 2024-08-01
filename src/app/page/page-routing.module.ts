@@ -6,6 +6,7 @@ import { BuyComponent } from './buy/buy.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
+  { path: '', component:LoginComponent },
   {path:'menu',component:MenuComponent},
   {path:'buy',component:BuyComponent}
 ];

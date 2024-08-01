@@ -37,7 +37,7 @@ export class LoginComponent {
   login(){
     if(this.loginForm.valid){
       console.log(this.loginForm.value);
-      this.router.navigate(['/page/dahboard']);
+      this.router.navigate(['/menu']);
 
     }
     else{
@@ -51,7 +51,7 @@ export class LoginComponent {
       setTimeout(()=>{
         window.location.reload();
       },2000);
-      this.router.navigate(['/page/login']);
+      this.router.navigate(['/login']);
 
     }
     else{

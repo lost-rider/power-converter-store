@@ -21,12 +21,10 @@ export class MenuComponent {
     this.router.navigate(['/budget-planner/dashboard']);
   }
   onProfile() {
-    this.router.navigate(['/page/buy']);
+    this.router.navigate(['/buy']);
   }
-  onHistory() {
-    this.router.navigate(['/budget-planner/history']);
-  }
+ 
   onLogout() {
-    this.router.navigate(['/budget-planner/login']);
+    this.router.navigate(['/login']);
   }
 }
