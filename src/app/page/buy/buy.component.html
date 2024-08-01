@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <div class="main-container">
-<div>
+
   <button class="raised-button"  (click)="toggleDropdown()">
     {{ selectedValue ? selectedValue : 'Select Component' }}
   </button>
@@ -12,12 +12,46 @@
   </div>
 </div>
 
-<div *ngIf=" selectedValue ==='Inductor' ">
-  <div>Hello Inductor</div>
+<div *ngIf=" selectedValue ==='Inductor' " >
+  <div class="inductor">
+    <div>Output Current(in Amperes)</div>
+    <mat-form-field floatLabel="always">
+      
+      <input matInput placeholder="Simple" />
+    </mat-form-field>
+    </div>
+    <div class="inductor">
+    <div>Input Voltage(Vd in volts)</div>
+    <mat-form-field floatLabel="always">
+      
+      <input matInput placeholder="Current " />
+    </mat-form-field>
+  </div>
+
+  <div class="inductor1">
+    <div>Output Power(in Watts)</div>
+    <mat-form-field floatLabel="always">
+      
+      <input matInput placeholder="Simple" />
+    </mat-form-field>
+    </div>
+    <div class="inductor1">
+    <div>Output Voltage(Vo in volts)</div>
+    <mat-form-field floatLabel="always">
+      
+      <input matInput placeholder="Current " />
+    </mat-form-field>
+  </div>
+  <div class="inductor2">
+    <div>Frequency(in Hz)</div>
+    <mat-form-field floatLabel="always">
+      
+      <input matInput placeholder="Current " />
+    </mat-form-field>
+  </div>
 </div>
 
 <div *ngIf=" selectedValue ==='Capacitor' ">
   <div>Hello capacitor</div>
 </div>
 
-</div>

@@ -5,10 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule}  from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';  // Usually needed alongside MatFormFieldModule
+
 @Component({
   selector: 'app-buy',
   standalone: true,
-  imports: [MenuComponent,IonicModule,CommonModule, FormsModule,MatButtonModule,MatIconModule],
+  imports: [MenuComponent,IonicModule,CommonModule, FormsModule,MatButtonModule,MatIconModule,MatFormFieldModule,MatInputModule],
   templateUrl: './buy.component.html',
   styleUrl: './buy.component.scss'
 })
