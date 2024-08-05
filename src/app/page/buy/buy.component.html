@@ -13,8 +13,9 @@
 </div>
 
 <div *ngIf=" selectedValue ==='Inductor' " >
+
   <div class="inductor">
-    <div>Output Current(in Amperes)</div>
+    <div>Current Ripple(in Amperes)</div>
     <mat-form-field floatLabel="always">
       
       <input matInput placeholder="Simple" />
@@ -49,6 +50,7 @@
       <input matInput placeholder="Current " />
     </mat-form-field>
   </div>
+  <div><button type="submit" class="btn">Submit</button></div>
 </div>
 
 <div *ngIf=" selectedValue ==='Capacitor' ">

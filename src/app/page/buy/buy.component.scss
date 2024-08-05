@@ -85,4 +85,19 @@
   .dropdown-item:hover {
     background-color: #ddd;
   }
-  
+  .btn{
+    font-size: medium;
+    text-decoration: solid;
+    width:15%;
+    padding: 15px;
+    border: none;
+    border-radius:6px;
+    background: linear-gradient(135deg,#008080,#7eeeee);
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 2%;
+    position: relative;
+    top: 130px;
+    left: 45%;
+  }
