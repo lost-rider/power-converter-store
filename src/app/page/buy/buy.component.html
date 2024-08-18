@@ -28,6 +28,7 @@
       <input matInput placeholder="Current " />
     </mat-form-field>
   </div>
+<!-- <h3>{{obj|json}}</h3> -->
 
   <div class="inductor1">
     <div>Output Power(in Watts)</div>
@@ -51,6 +52,28 @@
     </mat-form-field>
   </div>
   <div><button type="submit" class="btn">Submit</button></div>
+
+
+  <div class="res">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ product.title || 'No Title' }}</td>
+          <td>{{ product.price }}</td>
+          <td><a [href]="product.link" target="_blank">View Product</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
 </div>
 
 <div *ngIf=" selectedValue ==='Capacitor' ">
