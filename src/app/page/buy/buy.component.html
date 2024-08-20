@@ -11,21 +11,21 @@
 
   </div>
 </div>
-
+<form [formGroup]="form">
 <div *ngIf=" selectedValue ==='Inductor' " >
 
   <div class="inductor">
     <div>Current Ripple(in Amperes)</div>
     <mat-form-field floatLabel="always">
       
-      <input matInput placeholder="Simple" />
+      <input matInput placeholder="Current" formControlName="a" />
     </mat-form-field>
     </div>
     <div class="inductor">
     <div>Input Voltage(Vd in volts)</div>
     <mat-form-field floatLabel="always">
       
-      <input matInput placeholder="Current " />
+      <input matInput placeholder="Input voltage " formControlName="b"/>
     </mat-form-field>
   </div>
 <!-- <h3>{{obj|json}}</h3> -->
@@ -34,24 +34,24 @@
     <div>Output Power(in Watts)</div>
     <mat-form-field floatLabel="always">
       
-      <input matInput placeholder="Simple" />
+      <input matInput placeholder="Output Power" formControlName="c" />
     </mat-form-field>
     </div>
     <div class="inductor1">
     <div>Output Voltage(Vo in volts)</div>
     <mat-form-field floatLabel="always">
       
-      <input matInput placeholder="Current " />
+      <input matInput placeholder="Output voltage" formControlName="d" />
     </mat-form-field>
   </div>
   <div class="inductor2">
     <div>Frequency(in Hz)</div>
     <mat-form-field floatLabel="always">
       
-      <input matInput placeholder="Current " />
+      <input matInput placeholder="Frequency " formControlName="e" />
     </mat-form-field>
   </div>
-  <div><button type="submit" class="btn">Submit</button></div>
+  <div><button type="submit" class="btn" (click)="calculate()">Submit</button></div>
 
 
   <div class="res">
@@ -75,7 +75,7 @@
     </table>
     </div>
 </div>
-
+</form>
 <div *ngIf=" selectedValue ==='Capacitor' ">
   <div>Hello capacitor</div>
 </div>
