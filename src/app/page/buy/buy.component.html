@@ -52,24 +52,35 @@
     </mat-form-field>
   </div>
   <div><button type="submit" class="btn" (click)="calculate()">Submit</button></div>
+  <div *ngIf="chk===true" class="btn1">The calculated value of Inductor is {{res}}H.</div>
 
 
   <div class="res">
     <table border="1">
       <thead>
         <tr>
-          <th>#</th>
+          <!-- <th>#</th> -->
           <th>Title</th>
           <th>Price</th>
+          <th>Inductor Value</th>
+          <th>Current rating</th>
+          <th>Power rating</th>
           <th>Link</th>
+          <th>Score</th>
+          <th>Value1</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr *ngFor="let product of products; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ product.title || 'No Title' }}</td>
-          <td>{{ product.price }}</td>
-          <td><a [href]="product.link" target="_blank">View Product</a></td>
+          <!-- <td *ngIf="product.value1>=res" >{{ i + 1 }}</td> -->
+          <td *ngIf="product.value1>=res"   [ngClass]="{'red' : product.title==='' }">{{ product.title || 'No Title' }}</td>
+          <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.price==='NA' }">{{ product.price }}</td>
+          <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.value==='NA' }">{{ product.value }}</td>
+          <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.current_rating==='NA' }">{{ product.current_rating }}</td>
+          <td *ngIf="product.value1>=res"[ngClass]="{'red' : product.power_rating==='NA' }">{{ product.power_rating }}</td>
+          <td *ngIf="product.value1>=res"><a [href]="product.link" target="_blank">View Product</a></td>
+          <td *ngIf="product.value1>=res">{{ product.score }}</td>
+          <td *ngIf="product.value1>=res">{{ product.value1 }}</td>
         </tr>
       </tbody>
     </table>
