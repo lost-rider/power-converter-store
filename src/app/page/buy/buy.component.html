@@ -1,93 +1,220 @@
 <app-menu></app-menu>
-<div class="main-container">
+<div class="main-container" *ngIf="!converterType">
+  <div>Welcome to the Power Electronic Coverter Store</div>
+  <div> Select the type of power electronic converter</div>
 
-  <button class="raised-button"  (click)="toggleDropdown()">
+  <button class="raised-button1" (click)="toggleConverter()" >
+    {{ converterType ? converterType : 'Select Converter Type' }}
+  </button>
+  <div class="dropdown-menu" [class.show]="isConverter">
+    <a class="dropdown-item" (click)="selectConverter('DC-DC')">DC-DC</a>
+    <a class="dropdown-item" (click)="selectConverter('DC-AC')">DC-AC</a>
+    <a class="dropdown-item" (click)="selectConverter('AC-DC')">AC-DC</a>
+    <a class="dropdown-item" (click)="selectConverter('AC-AC')">AC-AC</a>
+
+
+  </div>
+</div>
+
+<div class="main-container" *ngIf="converterType !== 'DC-DC' && converterType">
+<div>Coming Soon!!</div>
+  <button class="raised-button1" (click)="toggleConverter()" >
+    {{ converterType ? converterType : 'Select Converter Type' }}
+  </button>
+
+  <div class="dropdown-menu" [class.show]="isConverter">
+    <a class="dropdown-item" (click)="selectConverter('DC-DC')">DC-DC</a>
+    <a class="dropdown-item" (click)="selectConverter('DC-AC')">DC-AC</a>
+    <a class="dropdown-item" (click)="selectConverter('AC-DC')">AC-DC</a>
+    <a class="dropdown-item" (click)="selectConverter('AC-AC')">AC-AC</a>
+
+
+  </div>
+ 
+</div>
+
+
+<div class="main-container"  *ngIf=" converterType ==='DC-DC' && !dcdcType">
+  
+  <div> Select the type of DC-DC converter</div>
+
+  <button class="raised-button1" (click)="toggleDcdc()" >
+    {{ dcdcType ? dcdcType : 'Select DC-DC Converter Type' }}
+  </button>
+  <div class="dropdown-menu" [class.show]="isDcdc">
+    <a class="dropdown-item" (click)="selectDcdc('Buck')">Buck Converter</a>
+    <a class="dropdown-item" (click)="selectDcdc('Boost')">Boost Converter</a>
+    <a class="dropdown-item" (click)="selectDcdc('Buck-Boost')">Buck-Boost Converter</a>
+    <a class="dropdown-item" (click)="goBack()">Go Back</a> <!-- Go Back Button -->
+
+
+
+  </div>
+</div>
+
+
+<div class="main-container"  *ngIf=" dcdcType !=='Buck' && dcdcType">
+  
+  <div> Coming Soon!!</div>
+
+  <button class="raised-button1" (click)="toggleDcdc()" >
+    {{ dcdcType ? dcdcType : 'Select DC-DC Converter Type' }}
+  </button>
+  <div class="dropdown-menu" [class.show]="isDcdc">
+    <a class="dropdown-item" (click)="selectDcdc('Buck')">Buck Converter</a>
+    <a class="dropdown-item" (click)="selectDcdc('Boost')">Boost Converter</a>
+    <a class="dropdown-item" (click)="selectDcdc('Buck-Boost')">Buck-Boost Converter</a>
+    <a class="dropdown-item" (click)="goBack()">Go Back</a> <!-- Go Back Button -->
+
+
+
+  </div>
+</div>
+
+
+<div class="main-container" *ngIf=" dcdcType ==='Buck' ">
+  <div *ngIf="!selectedValue">Select the component of Buck Converter</div>
+  <button class="raised-button1" (click)="toggleDropdown()" >
     {{ selectedValue ? selectedValue : 'Select Component' }}
   </button>
   <div class="dropdown-menu" [class.show]="isOpen">
     <a class="dropdown-item" (click)="selectItem('Inductor')">Inductor</a>
     <a class="dropdown-item" (click)="selectItem('Capacitor')">Capacitor</a>
-    <a class="dropdown-item" (click)="selectItem('Select Component')">Go back</a>
-
+    <a class="dropdown-item" (click)="goBackToConverter()">Go Back</a>
   </div>
 </div>
-<form [formGroup]="form">
-<div *ngIf=" selectedValue ==='Inductor' " >
 
-  <div class="inductor">
-    <div>Current Ripple(in Amperes)</div>
-    <mat-form-field floatLabel="always">
-      
-      <input matInput placeholder="Current" formControlName="a" />
-    </mat-form-field>
+  <div *ngIf=" selectedValue ==='Inductor' ">
+
+    
+    
+      <form [formGroup]="form">
+        <div class="inductor">
+      <div>Current Ripple(in Amperes)</div>
+      <mat-form-field floatLabel="always">
+
+        <input matInput placeholder="Current" formControlName="a" />
+      </mat-form-field>
     </div>
     <div class="inductor">
-    <div>Input Voltage(Vd in volts)</div>
-    <mat-form-field floatLabel="always">
-      
-      <input matInput placeholder="Input voltage " formControlName="b"/>
-    </mat-form-field>
-  </div>
-<!-- <h3>{{obj|json}}</h3> -->
+      <div>Input Voltage(Vd in volts)</div>
+      <mat-form-field floatLabel="always">
 
-  <div class="inductor1">
-    <div>Output Power(in Watts)</div>
-    <mat-form-field floatLabel="always">
-      
-      <input matInput placeholder="Output Power" formControlName="c" />
-    </mat-form-field>
+        <input matInput placeholder="Input voltage " formControlName="b" />
+      </mat-form-field>
+    </div>
+
+    <div class="inductor1">
+      <div>Output Power(in Watts)</div>
+      <mat-form-field floatLabel="always">
+
+        <input matInput placeholder="Output Power" formControlName="c" />
+      </mat-form-field>
     </div>
     <div class="inductor1">
-    <div>Output Voltage(Vo in volts)</div>
-    <mat-form-field floatLabel="always">
-      
-      <input matInput placeholder="Output voltage" formControlName="d" />
-    </mat-form-field>
-  </div>
-  <div class="inductor2">
-    <div>Frequency(in Hz)</div>
-    <mat-form-field floatLabel="always">
-      
-      <input matInput placeholder="Frequency " formControlName="e" />
-    </mat-form-field>
-  </div>
-  <div><button type="submit" class="btn" (click)="calculate()">Submit</button></div>
-  <div *ngIf="chk===true" class="btn1">The calculated value of Inductor is {{res}}H.</div>
+      <div>Output Voltage(Vo in volts)</div>
+      <mat-form-field floatLabel="always">
 
-
-  <div class="res">
-    <table border="1">
-      <thead>
-        <tr>
-          <!-- <th>#</th> -->
-          <th>Title</th>
-          <th>Price</th>
-          <th>Inductor Value</th>
-          <th>Current rating</th>
-          <th>Power rating</th>
-          <th>Link</th>
-          <th>Score</th>
-          <th>Value1</th>
-        </tr>
-      </thead>
-      <tbody >
-        <tr *ngFor="let product of products; let i = index">
-          <!-- <td *ngIf="product.value1>=res" >{{ i + 1 }}</td> -->
-          <td *ngIf="product.value1>=res"   [ngClass]="{'red' : product.title==='' }">{{ product.title || 'No Title' }}</td>
-          <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.price==='NA' }">{{ product.price }}</td>
-          <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.value==='NA' }">{{ product.value }}</td>
-          <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.current_rating==='NA' }">{{ product.current_rating }}</td>
-          <td *ngIf="product.value1>=res"[ngClass]="{'red' : product.power_rating==='NA' }">{{ product.power_rating }}</td>
-          <td *ngIf="product.value1>=res"><a [href]="product.link" target="_blank">View Product</a></td>
-          <td *ngIf="product.value1>=res">{{ product.score }}</td>
-          <td *ngIf="product.value1>=res">{{ product.value1 }}</td>
-        </tr>
-      </tbody>
-    </table>
+        <input matInput placeholder="Output voltage" formControlName="d" />
+      </mat-form-field>
     </div>
-</div>
-</form>
+    <div class="inductor2">
+      <div>Frequency(in Hz)</div>
+      <mat-form-field floatLabel="always">
+
+        <input matInput placeholder="Frequency " formControlName="e" />
+      </mat-form-field>
+    </div>
+   
+   
+
+
+
+    <button class="raised-button" (click)="toggleDropdown1()" >
+      Inductor value priority: {{ priorityValue ? priorityValue : ' ' }}
+    </button>
+    <div class="dropdown-menu" [class.show]="isOpen1">
+      <a class="dropdown-item" (click)="selectItem1('I')">I</a>
+      <a class="dropdown-item" (click)="selectItem1('II')">II</a>
+      <a class="dropdown-item" (click)="selectItem1('III')">III</a>
+  
+    </div>
+
+    <button class="raised-button" (click)="toggleDropdown2()" >
+      Current rating priority: {{ priorityValue1 ? priorityValue1 : ' ' }}
+    </button>
+    <div class="dropdown-menu" [class.show]="isOpen2">
+      <a class="dropdown-item" (click)="selectItem2('I')">I</a>
+      <a class="dropdown-item" (click)="selectItem2('II')">II</a>
+      <a class="dropdown-item" (click)="selectItem2('III')">III</a>
+  
+    </div>
+
+
+    <button class="raised-button" (click)="toggleDropdown3()" >
+      Price priority: {{ priorityValue2 ? priorityValue2 : ' ' }}
+    </button>
+    <div class="dropdown-menu" [class.show]="isOpen3">
+      <a class="dropdown-item" (click)="selectItem3('I')">I</a>
+      <a class="dropdown-item" (click)="selectItem3('II')">II</a>
+      <a class="dropdown-item" (click)="selectItem3('III')">III</a>
+  
+    </div>
+
+
+    <div><button type="submit" class="btn" (click)="calculate()">Submit</button></div>
+  </form>
+
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [stroke]="chartOptions.stroke"
+      [title]="chartOptions.title">
+    </apx-chart>
+  </div>
+  <div *ngIf="chk===true" class="btn1">The calculated value of Inductor is {{res}}H.</div>
+    <div class="res">
+      <table border="1" id="customers">
+        <thead>
+          <tr>
+            <!-- <th>#</th> -->
+            <th class="title">Title</th>
+            <th class="price">Price</th>
+            <th>Inductor Value</th>
+            <th>Core</th>
+            <!-- <th> Value1</th> -->
+            <th>Current rating</th>
+            <th>Power rating</th>
+            <th>Link</th>
+            <!-- <th>Score</th>
+            <th>Value1</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; let i = index">
+            <!-- <td *ngIf="product.value1>=res" >{{ i + 1 }}</td> -->
+            <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.title==='' }" class="title">{{ product.title || 'No Title' }}
+            </td>
+            <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.price==='NA' }" class="price">{{ product.price }}</td>
+            <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.value==='NA' }">{{ product.value }}</td>
+            <!-- <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.value==='NA' }">{{ product.value1 }}</td> -->
+            <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.core==='NA' }">{{
+              product.core }}</td>
+            <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.current_rating==='NA' }">{{
+              product.current_rating }}</td>
+            <td *ngIf="product.value1>=res" [ngClass]="{'red' : product.power_rating==='NA' }">{{ product.power_rating
+              }}</td>
+            <td *ngIf="product.value1>=res"><a [href]="product.link" target="_blank">View Product</a></td>
+            <!-- <td *ngIf="product.value1>=res">{{ product.score }}</td>
+            <td *ngIf="product.value1>=res">{{ product.value1 }}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 <div *ngIf=" selectedValue ==='Capacitor' ">
   <div>Hello capacitor</div>
 </div>
-
